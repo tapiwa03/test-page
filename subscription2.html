@@ -41,7 +41,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
       <h3>Steak Spices</h3>
       <h4>Next Delivery: <b>22 November 2020</b></h4>
       <p>Delivers Every 30 Day(s)</p>
-      <a class="w3-button w3-white w3-border w3-border-red w3-round-large rct_button" data-subscrition-cancel href="javascript:void(0)" id="re_cancel_acc_btn">Cancel Myy Subscription</a>
+      <a class="w3-button w3-white w3-border w3-border-red w3-round-large" href="javascript:void(0)" id="re_cancel_acc_btn">Cancel My Subscription</a>
     </div>
     
   </div>
@@ -77,18 +77,15 @@ function w3_close() {
 }
 </script>
 
-<script src='http://localhost:8000/staticfiles/code_snippets/recharge_redirect.js'>
-</script>
+<script src='https://bellwethragents.s3.amazonaws.com/js/embedded_experience.js'></script>
 <script>
-  window.addEventListener(
-    'DOMContentLoaded', startRetentionEngine('http://localhost:8000/offboard/experience/friday-8600908459bb')
-  );
-
-  const generateRetentionEngineLink = (subscription_ids_array) => {
-    return RELinkGenerator('http://localhost:8000/offboard/experience/friday-8600908459bb', subscription_ids_array);
-  };
+  window.onload = () => { buildEmbeddedExperience() };
+  document.getElementById('re_cancel_acc_btn').onclick = function () {
+    // offboard_url = `https://app.bellwethr.com/offboard/experience/bellwethr-8286110113?subscription_id=${Math.floor(Math.random() * 1000000000) + 1}`;
+    offboard_url = `https://dbec-2c0f-eb68-219-1a00-81f9-28e9-220-da.ngrok.io?subscription_id=171361680&is_embedded=true`;
+    openReModal(offboard_url);
+  }
 </script>
-
 
 
 
